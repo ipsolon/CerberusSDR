@@ -578,18 +578,18 @@ dut.write(0xEE, 0x1)
 
 # clkgrp3_div1_cfg1_en[0:0] = 0x0
 # clkgrp3_div1_cfg1_phdelta_mslip[1:1] = 0x1
-# clkgrp3_div1_cfg2_startmode[3:2] = 0x3
+# clkgrp3_div1_cfg2_startmode[3:2] = 0x0
 # clkgrp3_div1_cfg1_rev[4:4] = 0x1
 # clkgrp3_div1_cfg1_slipmask[5:5] = 0x1
 # clkgrp3_div1_cfg1_reseedmask[6:6] = 0x1
 # clkgrp3_div1_cfg1_hi_perf[7:7] = 0x0
-dut.write(0xF0, 0x7E)
+dut.write(0xF0, 0x72)
 
-# clkgrp3_div1_cfg12_divrat_lsb[7:0] = 0x40
-dut.write(0xF1, 0x40)
+# clkgrp3_div1_cfg12_divrat_lsb[7:0] = 0xC
+dut.write(0xF1, 0xC)
 
-# clkgrp3_div1_cfg12_divrat_msb[3:0] = 0x1
-dut.write(0xF2, 0x1)
+# clkgrp3_div1_cfg12_divrat_msb[3:0] = 0x0
+dut.write(0xF2, 0x0)
 
 # clkgrp3_div1_cfg5_fine_delay[4:0] = 0x0
 dut.write(0xF3, 0x0)
@@ -614,17 +614,17 @@ dut.write(0xF7, 0x0)
 # clkgrp3_div1_cfg2_mutesel[7:6] = 0x0
 dut.write(0xF8, 0x13)
 
-# clkgrp3_div2_cfg1_en[0:0] = 0x1
+# clkgrp3_div2_cfg1_en[0:0] = 0x0
 # clkgrp3_div2_cfg1_phdelta_mslip[1:1] = 0x1
 # clkgrp3_div2_cfg2_startmode[3:2] = 0x0
 # clkgrp3_div2_cfg1_rev[4:4] = 0x1
 # clkgrp3_div2_cfg1_slipmask[5:5] = 0x1
 # clkgrp3_div2_cfg1_reseedmask[6:6] = 0x1
 # clkgrp3_div2_cfg1_hi_perf[7:7] = 0x0
-dut.write(0xFA, 0x73)
+dut.write(0xFA, 0x72)
 
-# clkgrp3_div2_cfg12_divrat_lsb[7:0] = 0x5
-dut.write(0xFB, 0x5)
+# clkgrp3_div2_cfg12_divrat_lsb[7:0] = 0xC
+dut.write(0xFB, 0xC)
 
 # clkgrp3_div2_cfg12_divrat_msb[3:0] = 0x0
 dut.write(0xFC, 0x0)
@@ -696,14 +696,14 @@ dut.write(0x10C, 0x3)
 # clkgrp4_div2_cfg1_rev[4:4] = 0x1
 # clkgrp4_div2_cfg1_slipmask[5:5] = 0x1
 # clkgrp4_div2_cfg1_reseedmask[6:6] = 0x1
-# clkgrp4_div2_cfg1_hi_perf[7:7] = 0x1
-dut.write(0x10E, 0xF0)
+# clkgrp4_div2_cfg1_hi_perf[7:7] = 0x0
+dut.write(0x10E, 0x70)
 
-# clkgrp4_div2_cfg12_divrat_lsb[7:0] = 0x0
-dut.write(0x10F, 0x0)
+# clkgrp4_div2_cfg12_divrat_lsb[7:0] = 0xFD
+dut.write(0x10F, 0xFD)
 
-# clkgrp4_div2_cfg12_divrat_msb[3:0] = 0x1
-dut.write(0x110, 0x1)
+# clkgrp4_div2_cfg12_divrat_msb[3:0] = 0x0
+dut.write(0x110, 0x0)
 
 # clkgrp4_div2_cfg5_fine_delay[4:0] = 0x0
 dut.write(0x111, 0x0)
@@ -768,15 +768,15 @@ dut.write(0x120, 0x1B)
 
 # clkgrp5_div2_cfg1_en[0:0] = 0x0
 # clkgrp5_div2_cfg1_phdelta_mslip[1:1] = 0x0
-# clkgrp5_div2_cfg2_startmode[3:2] = 0x2
+# clkgrp5_div2_cfg2_startmode[3:2] = 0x3
 # clkgrp5_div2_cfg1_rev[4:4] = 0x1
 # clkgrp5_div2_cfg1_slipmask[5:5] = 0x1
 # clkgrp5_div2_cfg1_reseedmask[6:6] = 0x1
-# clkgrp5_div2_cfg1_hi_perf[7:7] = 0x1
-dut.write(0x122, 0xF8)
+# clkgrp5_div2_cfg1_hi_perf[7:7] = 0x0
+dut.write(0x122, 0x7C)
 
-# clkgrp5_div2_cfg12_divrat_lsb[7:0] = 0xFE
-dut.write(0x123, 0xFE)
+# clkgrp5_div2_cfg12_divrat_lsb[7:0] = 0xFA
+dut.write(0x123, 0xFA)
 
 # clkgrp5_div2_cfg12_divrat_msb[3:0] = 0x0
 dut.write(0x124, 0x0)
@@ -813,8 +813,8 @@ dut.write(0x12A, 0x1)
 # clkgrp6_div1_cfg1_hi_perf[7:7] = 0x0
 dut.write(0x12C, 0x72)
 
-# clkgrp6_div1_cfg12_divrat_lsb[7:0] = 0x5
-dut.write(0x12D, 0x5)
+# clkgrp6_div1_cfg12_divrat_lsb[7:0] = 0x6
+dut.write(0x12D, 0x6)
 
 # clkgrp6_div1_cfg12_divrat_msb[3:0] = 0x0
 dut.write(0x12E, 0x0)
@@ -844,15 +844,15 @@ dut.write(0x134, 0x1)
 
 # clkgrp6_div2_cfg1_en[0:0] = 0x0
 # clkgrp6_div2_cfg1_phdelta_mslip[1:1] = 0x1
-# clkgrp6_div2_cfg2_startmode[3:2] = 0x0
+# clkgrp6_div2_cfg2_startmode[3:2] = 0x3
 # clkgrp6_div2_cfg1_rev[4:4] = 0x1
 # clkgrp6_div2_cfg1_slipmask[5:5] = 0x1
 # clkgrp6_div2_cfg1_reseedmask[6:6] = 0x1
 # clkgrp6_div2_cfg1_hi_perf[7:7] = 0x0
-dut.write(0x136, 0x72)
+dut.write(0x136, 0x7E)
 
-# clkgrp6_div2_cfg12_divrat_lsb[7:0] = 0x5
-dut.write(0x137, 0x5)
+# clkgrp6_div2_cfg12_divrat_lsb[7:0] = 0x6
+dut.write(0x137, 0x6)
 
 # clkgrp6_div2_cfg12_divrat_msb[3:0] = 0x0
 dut.write(0x138, 0x0)
@@ -889,8 +889,8 @@ dut.write(0x13E, 0x1)
 # clkgrp7_div1_cfg1_hi_perf[7:7] = 0x0
 dut.write(0x140, 0x7A)
 
-# clkgrp7_div1_cfg12_divrat_lsb[7:0] = 0x5
-dut.write(0x141, 0x5)
+# clkgrp7_div1_cfg12_divrat_lsb[7:0] = 0x6
+dut.write(0x141, 0x6)
 
 # clkgrp7_div1_cfg12_divrat_msb[3:0] = 0x0
 dut.write(0x142, 0x0)
@@ -927,8 +927,8 @@ dut.write(0x148, 0x1)
 # clkgrp7_div2_cfg1_hi_perf[7:7] = 0x0
 dut.write(0x14A, 0x7E)
 
-# clkgrp7_div2_cfg12_divrat_lsb[7:0] = 0x5
-dut.write(0x14B, 0x5)
+# clkgrp7_div2_cfg12_divrat_lsb[7:0] = 0x6
+dut.write(0x14B, 0x6)
 
 # clkgrp7_div2_cfg12_divrat_msb[3:0] = 0x0
 dut.write(0x14C, 0x0)
@@ -939,8 +939,8 @@ dut.write(0x14D, 0x0)
 # clkgrp7_div2_cfg5_sel_coarse_delay[4:0] = 0x0
 dut.write(0x14E, 0x0)
 
-# clkgrp7_div2_cfg12_mslip_lsb[7:0] = 0x0
-dut.write(0x14F, 0x0)
+# clkgrp7_div2_cfg12_mslip_lsb[7:0] = 0x2
+dut.write(0x14F, 0x2)
 
 # clkgrp7_div2_cfg12_mslip_msb[3:0] = 0x0
 dut.write(0x150, 0x0)

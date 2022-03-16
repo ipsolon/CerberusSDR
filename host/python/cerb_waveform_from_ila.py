@@ -7,7 +7,8 @@
 
 :about:
 Reads the AXI-S ADC/DAC ILA data from a CSV formatted file,
-and plots the waveform.
+and plots the waveform.This is expected to be used with
+the Cerberus-RFDC FPGA build as part of the Petalinux BSP.
 
 :license:
 Copyright (C) 2022 Ipsolon Research, Inc
@@ -15,42 +16,8 @@ All rights reserved.
 """
 import numpy as np
 import csv, re, struct
-from scipy.fftpack import fft, fftfreq, fftshift
+from utils import plot_cmplx_waveform, plot_power_spectrum
 import matplotlib.pyplot as plt
-from pathlib import Path, PureWindowsPath
-
-def get_power_spectrum(x, Fs = 1):
-    N = len(x)
-    yf = fft(x)/N
-    xf = fftfreq(N, 1/Fs)
-    xf = fftshift(xf)
-    yf = fftshift(yf)
-    yf_db = 20*np.log10(np.abs(yf) + 1e-10)
-    return yf_db, xf
-
-# plot ouptut power spectrum
-def plot_power_spectrum(x, Fs=1, axis = None):
-    if not axis:
-        fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1)
-
-    P, F = get_power_spectrum(x, Fs)
-
-    ax.plot(F, P, color='r')
-    ax.grid()
-    ax.set_ylabel('Power (dB)')
-    ax.set_xlabel('Frequency (MHz)')
-    ax.set_title('Output Power Spectrum')
-
-def plot_cmplx_waveform(x, Fs=1, slice=1000):
-    fig, ax = plt.subplots(2)
-    fig.suptitle('Complex Waveform')
-    ax[0].plot(np.real(x[0:slice]))
-    ax[0].set(xlabel='Samples', ylabel='Amplitude', title='Real Waveform')
-    ax[0].grid()
-    ax[1].plot(np.imag(x[0:slice]))
-    ax[1].set(xlabel='Samples', ylabel='Amplitude', title='Imag Waveform')
-    ax[1].grid()
 
 def parse_ila_csv_file(fn, fs = 500e6, dataWidth=16, sampsPerCycle=2):
     wv = []
@@ -76,14 +43,13 @@ def parse_ila_csv_file(fn, fs = 500e6, dataWidth=16, sampsPerCycle=2):
 
 
 if __name__ == '__main__':
-    fn = 'rfdc_adc_ila_data.csv'
-    #fn = 'rfdc_dac_ila_data.csv'
-    fs = 500e6
+    fn = 'data/rfdc_adc_ila_data.csv'
+    #fn = 'data/rfdc_dac_ila_data.csv'
+    fs_mhz = 500.0
 
     iq = parse_ila_csv_file(fn)
-
-    plot_cmplx_waveform(iq, fs/1e6)
-    plot_power_spectrum(iq, fs/1e6)
+    plot_cmplx_waveform(iq)
+    plot_power_spectrum(iq, fs_mhz)
     plt.show(block=True)
 
 

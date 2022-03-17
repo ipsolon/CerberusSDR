@@ -2,4 +2,5 @@
 __pycache__
 *.csv
 *.cfile
-*build*
+cmake-build-*
+ganymed-ssh2-build250/

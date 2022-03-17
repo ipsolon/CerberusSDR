@@ -27,7 +27,7 @@ def cerb_request_samples(ip, nsamps=2**16, cwgen_freq_hz=10e6, cwgen_ampl_scale=
     ssh = SSH(ip)
 
     fn = 'rx_samples_to_file.cfile'
-    cmd = os.path.join('/home/root/', 'rx_samples_to_file')
+    cmd = 'rx_samples_to_file'
     cmd += " --file=" + fn
     cmd += " --nsamps=" + str(int(nsamps))
     cmd += " --cwgen-freq=" + str(cwgen_freq_hz)
@@ -53,8 +53,7 @@ def cerb_request_samples(ip, nsamps=2**16, cwgen_freq_hz=10e6, cwgen_ampl_scale=
 
 if __name__ == '__main__':
 
-    fs_mhz = 500.0
     iq = cerb_request_samples(ip="10.21.154.71")
-    plot_cmplx_waveform(iq, fs_mhz)
-    plot_power_spectrum(iq, fs_mhz)
+    plot_cmplx_waveform(iq)
+    plot_power_spectrum(iq)
     plt.show(block=True)

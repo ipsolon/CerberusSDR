@@ -19,7 +19,7 @@ import csv, re, struct
 from utils import plot_cmplx_waveform, plot_power_spectrum
 import matplotlib.pyplot as plt
 
-def parse_ila_csv_file(fn, fs = 500e6, dataWidth=16, sampsPerCycle=2):
+def parse_ila_csv_file(fn, sampsPerCycle=2):
     wv = []
     with open(fn, newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
@@ -45,11 +45,10 @@ def parse_ila_csv_file(fn, fs = 500e6, dataWidth=16, sampsPerCycle=2):
 if __name__ == '__main__':
     fn = 'data/rfdc_adc_ila_data.csv'
     #fn = 'data/rfdc_dac_ila_data.csv'
-    fs_mhz = 500.0
 
     iq = parse_ila_csv_file(fn)
     plot_cmplx_waveform(iq)
-    plot_power_spectrum(iq, fs_mhz)
+    plot_power_spectrum(iq)
     plt.show(block=True)
 
 

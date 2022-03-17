@@ -25,19 +25,22 @@ def get_power_spectrum(x, Fs=1):
     yf_db = 20*np.log10(np.abs(yf) + 1e-10)
     return yf_db, xf
 
-def plot_cmplx_waveform(x, slice=1000):
+def plot_cmplx_waveform(x, nsamps=1000):
     """ plot the complex time waveform """
     fig, ax = plt.subplots(2)
     fig.suptitle('Complex Waveform')
 
-    ax[0].plot(np.real(x[0:slice]))
+    if len(x) < nsamps:
+        nsamps = len(x)
+
+    ax[0].plot(np.real(x[0:nsamps]))
     ax[0].set(xlabel='Samples', ylabel='Amplitude', title='Real Waveform')
     ax[0].grid()
-    ax[1].plot(np.imag(x[0:slice]))
+    ax[1].plot(np.imag(x[0:nsamps]))
     ax[1].set(xlabel='Samples', ylabel='Amplitude', title='Imag Waveform')
     ax[1].grid()
 
-def plot_power_spectrum(sig, fs=1.0):
+def plot_power_spectrum(sig, fs=500.0):
     """ plot power spectrum """
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)

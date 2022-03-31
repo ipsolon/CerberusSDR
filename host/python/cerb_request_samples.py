@@ -19,10 +19,10 @@ import os
 import numpy as np
 from ssh import SSH
 from pathlib import Path
-from utils import plot_cmplx_waveform, plot_power_spectrum
+from utils import plot_cmplx_waveform, plot_power_spectrum, plot_inst_frequency
 import matplotlib.pyplot as plt
 
-def cerb_request_samples(ip, nsamps=2**16, cwgen_freq_hz=10e6, cwgen_ampl_scale=1):
+def cerb_request_samples(ip, nsamps=2**16, cwgen_freq_hz=50e6, cwgen_ampl_scale=0):
     """ Requests IQ Samples and configures the AXI CWGEN IP """
     ssh = SSH(ip)
 
@@ -54,6 +54,7 @@ def cerb_request_samples(ip, nsamps=2**16, cwgen_freq_hz=10e6, cwgen_ampl_scale=
 if __name__ == '__main__':
 
     iq = cerb_request_samples(ip="10.21.154.71")
-    plot_cmplx_waveform(iq)
+    plot_cmplx_waveform(iq, nsamps=len(iq))
     plot_power_spectrum(iq)
+    plot_inst_frequency(iq)
     plt.show(block=True)

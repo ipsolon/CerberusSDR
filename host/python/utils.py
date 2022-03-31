@@ -42,11 +42,21 @@ def plot_cmplx_waveform(x, nsamps=1000):
 
 def plot_power_spectrum(sig, fs=500.0):
     """ plot power spectrum """
-    fig = plt.figure()
-    ax = fig.add_subplot(1, 1, 1)
+    fig, ax = plt.subplots(1)
     P, F = get_power_spectrum(sig, fs)
     ax.plot(F, P, color='r')
     ax.grid()
     ax.set_ylabel('Power (dB)')
     ax.set_xlabel('Frequency (MHz)')
     ax.set_title('Output Power Spectrum')
+
+def plot_inst_frequency(sig, fs=500.0):
+    """ plot instantaneous frequency """
+    fmhz = np.diff(np.unwrap(np.angle(sig))) / (2*np.pi) * fs
+
+    fig, ax = plt.subplots(1)
+    ax.plot(fmhz)
+    ax.grid()
+    ax.set_ylabel('Frequency Estimate (MHz)')
+    ax.set_xlabel('Samples')
+    ax.set_title('Instantaneous Freq Estimate')
